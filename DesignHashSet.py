@@ -29,7 +29,7 @@ myHashSet.contains(2); // return False, (already removed)
 Constraints:
 
 - 0 <= key <= 106
-- At most 104 calls will be made to add, remove, and contains.
+- At most 104 calls will be made to add, remove, and contain.
 """
 # Solution
 
@@ -38,27 +38,27 @@ class MyHashSet:
         self.size = 1000                      # Size of the hash table
         self.buckets = [None] * self.size     # Initialize the hash table
 
-    def hash_func(self, key: int) -> int:     # Hashing function that takes a key and return its hashed value
+    def hash_func(self, key: int) -> int:     # Hashing function that takes a key and returns its hashed value
         return key % self.size                # here, the key modulo the size of the hash table
     
     def add(self, key: int) -> None:          # Adds a key to the HashSet. 
-        index = self.hash_func(key)           # It calculates the hash value of the key,
+        index = self.hash_func(key)           # It calculates the key's hash value
         if not self.buckets[index]:           # find its corresponding bucket,
             self.buclets[index] = []          # and, appends the key to that bucket if it's not already present
         if key not in self.buckets[index]:
             self.buckets[index].append(key)
 
     def remove(self, key: int) -> None:       # Removes a key from the HashSet.
-        index = self.hash_func(key)           # It calculates the hash value of the key, finds the corresponding bucket,
+        index = self.hash_func(key)           # It calculates the key's hash value, finds the corresponding bucket
         if self.buckets[index] and key in self.buckets[index]:
-            self.buckets[index].remove(key)   # and removes the key if it's present in that bucket.
+            self.buckets[index].remove(key)   # and remove the key if it's in that bucket.
 
     def contains(self, key: int) -> bool:     # Checks if a key exists in the HashSet. It calculates the hash value
-        index = self.hash_func(key)           # of the key, find the corresposnding bucket, and checks if the key exists
+        index = self.hash_func(key)           # of the key, find the corresponding bucket, and check if the key exists
         return self.bucket[index] and key in self.buckets[index]
     
 
-# Your MyHashSet pbject will be instatntiated and called as such:
+# Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
 # obj.add(key)
 # obj.remove(key)
